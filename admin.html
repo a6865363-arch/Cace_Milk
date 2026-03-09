@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="uz">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cake Mill | Admin Panel</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="admin.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body class="admin-body">
+    <div id="login-screen" class="admin-login-overlay">
+        <div class="login-card">
+            <div class="login-logo">
+                <a href="index.html">Cake <span>Mill</span></a>
+            </div>
+            <h2>Admin Login</h2>
+            <form id="admin-login-form">
+                <div class="input-group">
+                    <i class="fas fa-user"></i>
+                    <input type="text" id="username" placeholder="Username" required>
+                </div>
+                <div class="input-group">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" id="password" placeholder="Password" required>
+                </div>
+                <button type="submit" class="btn">Kirish</button>
+            </form>
+            <p id="login-error" class="error-msg"></p>
+        </div>
+    </div>
+
+    <div id="admin-layout" class="admin-layout hidden">
+        <aside class="admin-sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <a href="#">Cake <span>Mill</span></a>
+                </div>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li class="active" data-tab="dashboard">
+                        <i class="fas fa-chart-line"></i> <span>Dashboard</span>
+                    </li>
+                    <li data-tab="products">
+                        <i class="fas fa-cake-candles"></i> <span>Mahsulotlar</span>
+                    </li>
+                    <li data-tab="orders">
+                        <i class="fas fa-shopping-bag"></i> <span>Buyurtmalar</span>
+                    </li>
+                    <li data-tab="settings">
+                        <i class="fas fa-cog"></i> <span>Sozlamalar</span>
+                    </li>
+                </ul>
+            </nav>
+            <div class="sidebar-footer">
+                <button id="logout-btn"><i class="fas fa-sign-out-alt"></i> Chiqish</button>
+            </div>
+        </aside>
+
+        <main class="admin-main">
+            <header class="admin-header">
+                <div class="header-left">
+                    <h1 id="tab-title">Dashboard</h1>
+                </div>
+                <div class="header-right">
+                    <div class="admin-profile">
+                        <span>Admin Adminov</span>
+                        <img src="https://ui-avatars.com/api/?name=Admin&background=D4AF37&color=fff" alt="Profile">
+                    </div>
+                </div>
+            </header>
+
+            <div class="admin-content">
+                <!-- Dashboard Tab -->
+                <div id="dashboard-tab" class="tab-content active">
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-icon"><i class="fas fa-dollar-sign"></i></div>
+                            <div class="stat-info">
+                                <h3>1,250,000 so'm</h3>
+                                <p>Oylik tushum</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon"><i class="fas fa-shopping-cart"></i></div>
+                            <div class="stat-info">
+                                <h3>48</h3>
+                                <p>Jami buyurtmalar</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon"><i class="fas fa-users"></i></div>
+                            <div class="stat-info">
+                                <h3>156</h3>
+                                <p>Mijozlar</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon"><i class="fas fa-cake"></i></div>
+                            <div class="stat-info">
+                                <h3>12</h3>
+                                <p>Mahsulotlar</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="recent-orders">
+                        <h3>Oxirgi buyurtmalar</h3>
+                        <div class="table-container">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Mijoz</th>
+                                        <th>Mahsulot</th>
+                                        <th>Sana</th>
+                                        <th>Narx</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>#001</td>
+                                        <td>Ali Valiyev</td>
+                                        <td>Brownie Cake Mill</td>
+                                        <td>20.05.2024</td>
+                                        <td>150,000 so'm</td>
+                                        <td><span class="status status-done">Bajarildi</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>#002</td>
+                                        <td>Sardor Azimov</td>
+                                        <td>Honey Cake Mill</td>
+                                        <td>21.05.2024</td>
+                                        <td>130,000 so'm</td>
+                                        <td><span class="status status-pending">Kutilmoqda</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Products Tab -->
+                <div id="products-tab" class="tab-content">
+                    <div class="section-actions">
+                        <button class="btn" id="add-product-btn"><i class="fas fa-plus"></i> Yangi mahsulot</button>
+                    </div>
+                    <div class="table-container">
+                        <table id="products-table">
+                            <thead>
+                                <tr>
+                                    <th>Rasm</th>
+                                    <th>Nomi</th>
+                                    <th>Kategoriya</th>
+                                    <th>Narxi</th>
+                                    <th>Amallar</th>
+                                </tr>
+                            </thead>
+                            <tbody id="products-list">
+                                <!-- Dynamic items -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Orders Tab -->
+                <div id="orders-tab" class="tab-content">
+                    <p>Hozircha yangi buyurtmalar yo'q.</p>
+                </div>
+
+                <!-- Settings Tab -->
+                <div id="settings-tab" class="tab-content">
+                    <form class="settings-form">
+                        <div class="form-group">
+                            <label>Sayt nomi</label>
+                            <input type="text" value="Cake Mill">
+                        </div>
+                        <div class="form-group">
+                            <label>Telegram ID</label>
+                            <input type="text" value="@cakemill_uz">
+                        </div>
+                        <div class="form-group">
+                            <label>Telefon</label>
+                            <input type="text" value="+998 99 951 51 51">
+                        </div>
+                        <button type="button" class="btn">Saqlash</button>
+                    </form>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Product Modal -->
+    <div id="product-modal" class="modal">
+        <div class="modal-content">
+            <h2 id="modal-title">Yangi mahsulot</h2>
+            <form id="product-form">
+                <input type="hidden" id="edit-id">
+                <div class="form-group">
+                    <label>Nomi</label>
+                    <input type="text" id="product-name" required>
+                </div>
+                <div class="form-group">
+                    <label>Kategoriya</label>
+                    <select id="product-category">
+
+                        <option value="desserts">Dessertlar</option>
+
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Narxi (so'm)</label>
+                    <input type="number" id="product-price" required>
+                </div>
+                <div class="form-group">
+                    <label>Rasm URL</label>
+                    <input type="text" id="product-image" placeholder="assets/name.png" required>
+                </div>
+                <div class="form-group">
+                    <label>Tavsif</label>
+                    <textarea id="product-desc" rows="3"></textarea>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="btn btn-outline" id="close-modal">Bekor qilish</button>
+                    <button type="submit" class="btn">Saqlash</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="admin.js"></script>
+</body>
+
+</html>
